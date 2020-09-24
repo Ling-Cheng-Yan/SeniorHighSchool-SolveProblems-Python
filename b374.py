@@ -1,17 +1,27 @@
-n = int(input())
-num = input().split()
-saved_sum = 0
-for i in range(30000):
-    sum1 = 0
-    for k in range(n):
-        if i == (int(num[k])):
-        sum1 = sum1 + 1
-    if sum1 > saved_sum:
-        saved_sum = sum1
-        saved_i = i
-        saved_j = 0
-    elif sum1 == saved_sum:
-        saved_j = i  
-print(saved_i, saved_sum) 
-if saved_j > 0:
-    print(saved_j, saved_sum)
+import re
+
+s = input("")
+s = s.strip(" \t\r\n")
+n = int(s)
+
+s = input("")
+s = s.strip(" \t\r\n")
+s = s.split()
+
+c = {}
+for i in s:
+    a = int(i)
+
+    if a in c:
+        c[a] += 1
+    else:
+        c[a] = 1
+        
+max_count = 0
+for i in c:
+    if c[i] > max_count:
+        max_count = c[i]
+
+for i in sorted(c.keys()):
+    if c[i] == max_count:
+        print("{0} {1}".format(i, max_count))
